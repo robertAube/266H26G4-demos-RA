@@ -5,6 +5,8 @@ public class Produit {
     public static final double PRIX_DEF = 0;
     public static final int QTE_DEF = 0;
 
+    private static int cptNo = 1000;
+
     private int no;
     private String nom;
     private double prix;
@@ -14,7 +16,9 @@ public class Produit {
         this(NOM_DEF, PRIX_DEF, QTE_DEF);
     }
 
+    //surcharge
     public Produit(String nom, double prix, int qte) {
+        this.no = cptNo++;
         this.nom = nom;
         this.prix = prix;
         this.qte = qte;
@@ -52,6 +56,19 @@ public class Produit {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Produit produit = (Produit) o;
+        return no == produit.no;
+    }
+
+    @Override
+    public int hashCode() {
+        return no;
+    }
+
+    @Override
     public String toString() {
         return "Produit{" +
                 "no=" + no +
@@ -59,5 +76,9 @@ public class Produit {
                 ", prix=" + prix +
                 ", qte=" + qte +
                 '}';
+    }
+
+    public void setNo(int no) {
+        this.no = no;
     }
 }

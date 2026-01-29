@@ -10,7 +10,7 @@ public class Inventaire {
         listeProduit = new Produit[10];
         nbElement = 0;
     }
-
+//allo
     public void add(Produit p) {
         listeProduit[nbElement++] = p;
     }
