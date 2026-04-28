@@ -14,9 +14,9 @@ public class DatabaseManager {
     //Sécurité : on ne veut pas que ces données se retourve sur le git SURTOUT s'il est public!!!
     //On utilise des variables d'environnement pour stocker les informations d'authentification à la base de données.
     //setEnvSQL.env doit être chargé avant l'exécution java. Il est dans 'Q:/Cours/!H2026/420-266 POO2 (RA)'
-    private String bdURL = System.getenv("DB_URL");
-    private String bdUser = System.getenv("DB_USER");
-    private String dbPassword = System.getenv("DB_PASSWORD");
+    private String bdURL;
+    private String bdUser;
+    private String dbPassword;
 
     public DatabaseManager() {
         initInfoConnectionBD();
@@ -33,7 +33,7 @@ public class DatabaseManager {
     private void initInfoConnectionBD() {
         bdURL = System.getenv("DB_URL");
         bdUser = System.getenv("DB_USER");
-        dbPassword = null; //System.getenv("DB_PASSWORD");
+        dbPassword = System.getenv("DB_PASSWORD");
 
         if (bdURL == null || bdUser == null || dbPassword == null) {
             System.out.println("ERREUR : DB_URL, DB_USER et DB_PASSWORD doivent-être initialisés.");

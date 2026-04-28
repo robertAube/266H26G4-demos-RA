@@ -1,5 +1,7 @@
 package cours_25_Stack;
 
+import java.util.Stack;
+
 public class exercicePile_palindrome {
     public exercicePile_palindrome() {
         afficherEstUnPalindrome("radar");   // palindrome
@@ -18,6 +20,21 @@ public class exercicePile_palindrome {
      */
     private boolean estPalindrome(String str) {
         //todo implémenter la méthode pour vérifier si str est un palindrome ou pas en utilisant Stack
+        char c;
+        Stack<Character> pileCar = new Stack<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            c = str.charAt(i);
+            pileCar.push(c);
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            c = str.charAt(i);
+            if (pileCar.pop() != c) {
+                return false;
+            }
+        }
+
         return true;
     }
 
