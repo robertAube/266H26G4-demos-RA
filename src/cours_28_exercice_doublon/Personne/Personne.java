@@ -38,7 +38,7 @@ public abstract class Personne implements iCriable, Comparable<Personne>, Serial
 
     @Override
     public boolean equals(Object object) {
-        if (object == null || getClass() != object.getClass()) return false;
+        if (object == null || ! (object instanceof Personne)) return false;
 
         Personne personne = (Personne) object;
         return Objects.equals(nom, personne.nom) && Objects.equals(prenom, personne.prenom);
@@ -52,6 +52,13 @@ public abstract class Personne implements iCriable, Comparable<Personne>, Serial
         str += "Je suis un " + this.getClass().getSimpleName(); //Retourne le nom de la classe
 
         return str;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nom.hashCode();
+        result = 31 * result + prenom.hashCode();
+        return result;
     }
 
     @Override
